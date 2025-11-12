@@ -21,7 +21,7 @@
   </head>
 
   <body class="bg-gray-100 p-10">
-    <form class="max-w-sm mx-auto bg-white p-6 rounded-xl shadow">
+    <form class="max-w-sm mx-auto bg-white p-6 rounded-xl shadow" id="form">
       <!-- CPF -->
       <div class="mb-5">
         <label
@@ -53,6 +53,7 @@
             placeholder="Digite para buscar..."
             class="block w-full p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
                    focus:ring-blue-500 focus:border-blue-500"
+            required
           />
           <ul
             id="options-list"
@@ -60,21 +61,9 @@
                    max-h-40 overflow-y-auto"
           ></ul>
         </div>
-      </div>
-
-      <!-- Checkbox -->
-      <div class="flex items-start mb-5">
-        <div class="flex items-center h-5">
-          <input
-            id="remember"
-            type="checkbox"
-            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-            required
-          />
-        </div>
-        <label for="remember" class="ml-2 text-sm font-medium text-gray-900"
-          >Remember me</label
-        >
+        <p id="obra-error" class="mt-1 text-sm text-red-600 hidden">
+          Selecione uma obra válida.
+        </p>
       </div>
 
       <!-- Botão -->
@@ -82,7 +71,7 @@
         type="submit"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center"
       >
-        Submit
+        Solicitar
       </button>
     </form>
 
@@ -90,7 +79,6 @@
       // Máscara de CPF
       $("#cpf").inputmask("999.999.999-99");
 
-      // Lista de obras (poderia vir de API futuramente)
       const obras = [
         "Alphaville Castello - L11",
         "Alphaville Castello - K18",
@@ -102,41 +90,74 @@
 
       const input = document.getElementById("search-select");
       const list = document.getElementById("options-list");
+      const errorMsg = document.getElementById("obra-error");
 
-      // Função de filtro conforme digita
-      input.addEventListener("input", () => {
-        const value = input.value.toLowerCase();
+      // Função que mostra lista filtrada
+      function mostrarOpcoes(filtro = "") {
         list.innerHTML = "";
-        const filtered = obras.filter((obra) =>
-          obra.toLowerCase().includes(value)
+        const filtradas = obras.filter((obra) =>
+          obra.toLowerCase().includes(filtro.toLowerCase())
         );
 
-        if (filtered.length === 0 || value === "") {
+        if (filtradas.length === 0) {
           list.classList.add("hidden");
           return;
         }
 
         list.classList.remove("hidden");
-        filtered.forEach((obra) => {
+        filtradas.forEach((obra) => {
           const li = document.createElement("li");
           li.textContent = obra;
-          li.className =
-            "p-2 cursor-pointer hover:bg-blue-100 rounded";
+          li.className = "p-2 cursor-pointer hover:bg-blue-100 rounded";
           li.addEventListener("click", () => {
             input.value = obra;
             list.classList.add("hidden");
+            input.classList.remove("border-red-500");
+            errorMsg.classList.add("hidden");
           });
           list.appendChild(li);
         });
+      }
+
+      // Mostra opções ao digitar
+      input.addEventListener("input", () => {
+        mostrarOpcoes(input.value);
       });
 
-      // Fecha a lista ao clicar fora
+      // Mostra todas as opções ao focar o campo
+      input.addEventListener("focus", () => {
+        mostrarOpcoes();
+      });
+
+      // Fecha lista ao clicar fora
       document.addEventListener("click", (e) => {
         if (
           !e.target.closest("#search-select") &&
           !e.target.closest("#options-list")
         ) {
           list.classList.add("hidden");
+        }
+      });
+
+      // Validação ao sair do campo
+      input.addEventListener("blur", () => {
+        setTimeout(() => {
+          if (!obras.includes(input.value)) {
+            input.classList.add("border-red-500");
+            errorMsg.classList.remove("hidden");
+          } else {
+            input.classList.remove("border-red-500");
+            errorMsg.classList.add("hidden");
+          }
+        }, 150);
+      });
+
+      // Impede envio se obra for inválida
+      document.getElementById("form").addEventListener("submit", (e) => {
+        if (!obras.includes(input.value)) {
+          e.preventDefault();
+          input.classList.add("border-red-500");
+          errorMsg.classList.remove("hidden");
         }
       });
     </script>
