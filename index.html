@@ -39,18 +39,27 @@
         />
       </div>
 
-      <!-- Select de obras -->
+      <!-- Select com busca -->
       <div class="mb-5">
         <label
-          for="obras"
+          for="search-select"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Obra</label
         >
-        <select
-          id="obras"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          required
-        ></select>
+        <div class="relative">
+          <input
+            type="text"
+            id="search-select"
+            placeholder="Digite para buscar..."
+            class="block w-full p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
+                   focus:ring-blue-500 focus:border-blue-500"
+          />
+          <ul
+            id="options-list"
+            class="absolute z-10 w-full bg-white border border-gray-300 rounded-lg mt-1 hidden 
+                   max-h-40 overflow-y-auto"
+          ></ul>
+        </div>
       </div>
 
       <!-- Checkbox -->
@@ -91,14 +100,44 @@
         "Capivari - Obra",
       ];
 
-      const selectObras = document.getElementById("obras");
+      const input = document.getElementById("search-select");
+      const list = document.getElementById("options-list");
 
-      // Popula o select dinamicamente
-      obras.forEach((obra) => {
-        const option = document.createElement("option");
-        option.textContent = obra;
-        option.value = obra;
-        selectObras.appendChild(option);
+      // Função de filtro conforme digita
+      input.addEventListener("input", () => {
+        const value = input.value.toLowerCase();
+        list.innerHTML = "";
+        const filtered = obras.filter((obra) =>
+          obra.toLowerCase().includes(value)
+        );
+
+        if (filtered.length === 0 || value === "") {
+          list.classList.add("hidden");
+          return;
+        }
+
+        list.classList.remove("hidden");
+        filtered.forEach((obra) => {
+          const li = document.createElement("li");
+          li.textContent = obra;
+          li.className =
+            "p-2 cursor-pointer hover:bg-blue-100 rounded";
+          li.addEventListener("click", () => {
+            input.value = obra;
+            list.classList.add("hidden");
+          });
+          list.appendChild(li);
+        });
+      });
+
+      // Fecha a lista ao clicar fora
+      document.addEventListener("click", (e) => {
+        if (
+          !e.target.closest("#search-select") &&
+          !e.target.closest("#options-list")
+        ) {
+          list.classList.add("hidden");
+        }
       });
     </script>
   </body>
