@@ -10,7 +10,7 @@
 
     <!-- Flowbite -->
     <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
@@ -65,58 +65,261 @@
           Selecione uma obra válida.
         </p>
       </div>
-  
-<h3 class="block mb-2 text-sm font-medium text-gray-900">Equipamentos de Proteção</h3>
-<ul class="flex flex-col items-start select-none w-full text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base">
 
-  <li class="w-full border-b border-default last:border-b-0">
-    <label for="capacete-checkbox" class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50">
-      <div class="flex items-center">
-        <input id="capacete-checkbox" type="checkbox" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
-        <span class="ms-2 text-sm font-medium text-heading">Capacete de Segurança</span>
+      <!-- Accordion de Equipamentos de Proteção -->
+      <div
+        id="accordion-card"
+        data-accordion="collapse"
+        class="mt-5 mb-6 rounded-lg border border-gray-200 overflow-hidden bg-white"
+      >
+        <h2 id="accordion-card-heading-1">
+          <button
+            type="button"
+            class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-900 hover:bg-gray-50 gap-3"
+            data-accordion-target="#accordion-card-body-1"
+            aria-expanded="false"
+            aria-controls="accordion-card-body-1"
+          >
+            <div class="flex items-center gap-3">
+              <img
+                src="https://cdn-icons-png.freepik.com/256/516/516260.png?semt=ais_white_label"
+                alt="EPIs"
+                class="w-8 h-8"
+              />
+              <span class="text-sm text-gray-900">Equipamentos de Proteção</span>
+            </div>
+
+            <svg
+              data-accordion-icon
+              class="w-5 h-5 shrink-0"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m5 15 7-7 7 7"
+              />
+            </svg>
+          </button>
+        </h2>
+
+        <div
+          id="accordion-card-body-1"
+          class="hidden border-t border-gray-200"
+          aria-labelledby="accordion-card-heading-1"
+        >
+          <div class="p-4 md:p-5">
+            <ul
+              class="flex flex-col items-start select-none w-full text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base"
+            >
+              <li class="w-full border-b border-default last:border-b-0">
+                <label
+                  for="capacete-checkbox"
+                  class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50"
+                >
+                  <div class="flex items-center">
+                    <input
+                      id="capacete-checkbox"
+                      type="checkbox"
+                      class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                    />
+                    <span class="ms-2 text-sm font-medium text-heading"
+                      >Capacete de Segurança</span
+                    >
+                  </div>
+                  <img
+                    src="https://soluwan.com.br/wp-content/uploads/2021/09/CAPACETE-DE-SEGURANCA-AMARELO-PRO-SAFETY-1.png"
+                    class="w-20 h-20 rounded-md"
+                  />
+                </label>
+              </li>
+
+              <li class="w-full border-b border-default last:border-b-0">
+                <label
+                  for="luva-checkbox"
+                  class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50"
+                >
+                  <div class="flex items-center">
+                    <input
+                      id="luva-checkbox"
+                      type="checkbox"
+                      class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                    />
+                    <span class="ms-2 text-sm font-medium text-heading"
+                      >Luva Pigmentada Preta</span
+                    >
+                  </div>
+                  <img
+                    src="https://fken.vtexassets.com/arquivos/ids/281457/luva-malha-preta-pigmentada-tam-9g-kala.jpg?v=638555611517870000"
+                    class="w-20 h-20 rounded-md"
+                  />
+                </label>
+              </li>
+
+              <li class="w-full">
+                <label
+                  for="botina-checkbox"
+                  class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50"
+                >
+                  <div class="flex items-center">
+                    <input
+                      id="botina-checkbox"
+                      type="checkbox"
+                      class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                    />
+                    <span class="ms-2 text-sm font-medium text-heading"
+                      >Botina Biqueira de Aço</span
+                    >
+                  </div>
+                  <img
+                    src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTZXrN-uqH5DoLDuYglbdJb1pp53IHzSH3P4fWJyan6LCBfzur6iFH_ZjWygyTb1YhEqipo2DGmkC9gwOeDxfGnF-zVWqiGEgXqJUC2Gt2t1ac2N-4WdNLj"
+                    class="w-20 h-20 rounded-md"
+                  />
+                </label>
+
+                <!-- Seletor de tamanhos (oculto por padrão) -->
+                <div id="tamanhos-container" class="hidden px-4 pb-4">
+                  <select
+                    id="tamanho-botina"
+                    class="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                  >
+                    <option selected disabled>Selecione o tamanho</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                  </select>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <img src="https://soluwan.com.br/wp-content/uploads/2021/09/CAPACETE-DE-SEGURANCA-AMARELO-PRO-SAFETY-1.png" class="w-20 h-20 rounded-md">
-    </label>
-  </li>
 
-  <li class="w-full border-b border-default last:border-b-0">
-    <label for="luva-checkbox" class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50">
-      <div class="flex items-center">
-        <input id="luva-checkbox" type="checkbox" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
-        <span class="ms-2 text-sm font-medium text-heading">Luva Pigmentada Preta</span>
+      <!-- Accordion s -->
+      <div
+        id="accordion-uniformes"
+        data-accordion="collapse"
+        class="mb-6 rounded-lg border border-gray-200 overflow-hidden bg-white"
+      >
+        <h2 id="accordion-uniformes-heading">
+          <button
+            type="button"
+            class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-900 hover:bg-gray-50 gap-3"
+            data-accordion-target="#accordion-uniformes-body"
+            aria-expanded="false"
+            aria-controls="accordion-uniformes-body"
+          >
+            <div class="flex items-center gap-3">
+              <img
+                src="https://static.vecteezy.com/ti/vetor-gratis/p1/19052694-de-contorno-do-icone-de-camisa-de-futebol-design-uniforme-vetor.jpg"
+                alt="Uniformes"
+                class="w-8 h-8 object-cover"
+              />
+              <span class="text-sm text-gray-900">Uniformes</span>
+            </div>
+
+            <svg
+              data-accordion-icon
+              class="w-5 h-5 shrink-0"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m5 15 7-7 7 7"
+              />
+            </svg>
+          </button>
+        </h2>
+
+        <div
+          id="accordion-uniformes-body"
+          class="hidden border-t border-gray-200"
+          aria-labelledby="accordion-uniformes-heading"
+        >
+          <div class="p-4 md:p-5">
+            <!-- Conteúdo duplicado (você pode trocar pelos itens  depois) -->
+            <ul
+              class="flex flex-col items-start select-none w-full text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base"
+            >
+              <li class="w-full border-b border-default last:border-b-0">
+                <label
+                  for="uniforme-item-1"
+                  class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50"
+                >
+                  <div class="flex items-center">
+                    <input
+                      id="uniforme-item-1"
+                      type="checkbox"
+                      class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                    />
+                    <span class="ms-2 text-sm font-medium text-heading"
+                      >Camiseta</span
+                    >
+                  </div>
+                </label>
+              </li>
+
+              <li class="w-full border-b border-default last:border-b-0">
+                <label
+                  for="uniforme-item-2"
+                  class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50"
+                >
+                  <div class="flex items-center">
+                    <input
+                      id="uniforme-item-2"
+                      type="checkbox"
+                      class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                    />
+                    <span class="ms-2 text-sm font-medium text-heading"
+                      >Calça </span
+                    >
+                  </div>
+                </label>
+              </li>
+
+              <li class="w-full">
+                <label
+                  for="uniforme-item-3"
+                  class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50"
+                >
+                  <div class="flex items-center">
+                    <input
+                      id="uniforme-item-3"
+                      type="checkbox"
+                      class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                    />
+                    <span class="ms-2 text-sm font-medium text-heading"
+                      >Jaqueta </span
+                    >
+                  </div>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <img src="https://fken.vtexassets.com/arquivos/ids/281457/luva-malha-preta-pigmentada-tam-9g-kala.jpg?v=638555611517870000" class="w-20 h-20 rounded-md">
-    </label>
-  </li>
-
-  <li class="w-full">
-    <label for="botina-checkbox" class="flex items-center justify-between w-full p-3 cursor-pointer hover:bg-gray-50">
-      <div class="flex items-center">
-        <input id="botina-checkbox" type="checkbox" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
-        <span class="ms-2 text-sm font-medium text-heading">Botina Biqueira de Aço</span>
-      </div>
-      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTZXrN-uqH5DoLDuYglbdJb1pp53IHzSH3P4fWJyan6LCBfzur6iFH_ZjWygyTb1YhEqipo2DGmkC9gwOeDxfGnF-zVWqiGEgXqJUC2Gt2t1ac2N-4WdNLj" class="w-20 h-20 rounded-md">
-    </label>
-
-  <!-- Seletor de tamanhos (oculto por padrão) -->
-  <div id="tamanhos-container" class="hidden px-4 pb-4">
-    <select id="tamanho-botina"
-      class="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-      <option selected disabled>Selecione o tamanho</option>
-      <option value="36">36</option>
-      <option value="37">37</option>
-      <option value="38">38</option>
-      <option value="39">39</option>
-      <option value="40">40</option>
-      <option value="41">41</option>
-      <option value="42">42</option>
-      <option value="43">43</option>
-      <option value="44">44</option>
-      <option value="45">45</option>
-    </select>
-  </div>
-</li>
-
 
       <!-- Botão -->
       <button
@@ -213,18 +416,18 @@
         }
       });
 
-      const botinaCheckbox = document.getElementById('botina-checkbox');
-      const tamanhosContainer = document.getElementById('tamanhos-container');
+      const botinaCheckbox = document.getElementById("botina-checkbox");
+      const tamanhosContainer = document.getElementById("tamanhos-container");
 
-      botinaCheckbox.addEventListener('change', () => {
-        if (botinaCheckbox.checked) {
-          tamanhosContainer.classList.remove('hidden');
-        } else {
-          tamanhosContainer.classList.add('hidden');
-        }
-      });
-
-
+      if (botinaCheckbox) {
+        botinaCheckbox.addEventListener("change", () => {
+          if (botinaCheckbox.checked) {
+            tamanhosContainer.classList.remove("hidden");
+          } else {
+            tamanhosContainer.classList.add("hidden");
+          }
+        });
+      }
     </script>
   </body>
 </html>
